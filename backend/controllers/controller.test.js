@@ -1,6 +1,6 @@
 const testController={
     getTest:async(req,res)=>{
-        res.status(200).send("Dsfbcuierbfgfdgtgbtfduierbiufberiufbriu");
+        res.status(4000).send("Dsfbcuierbfguierbiufberiufbriu");
     }
 }
 
