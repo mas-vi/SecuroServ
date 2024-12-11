@@ -1,0 +1,72 @@
+p{
+    margin: 0 0 2rem 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.logos{
+    background: #262626;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+
+    .blur{
+        width: 250px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+    }
+
+    .left{
+        left:0;
+        background: linear-gradient(to left, rgba(255,255,255,0), #000000);
+    }
+
+    .right{
+        right:0;
+        background: linear-gradient(to right, rgba(255,255,255,0), #000000);
+    }
+
+
+    &:hover{
+        .logos-slide{
+            animation-play-state: paused;
+        }
+    }
+
+    p{
+        margin: 0 0;
+        padding: 2rem 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 4rem;
+        background-color: #000000;
+    }
+
+    .logos-slide{
+
+        display: inline-block;
+        padding: 60px 0;
+        background-color: #262626;
+        white-space: nowrap;
+        animation: 25s slide infinite linear;
+
+        img{
+            height: 200px;
+            margin: 0 60px;
+        }
+    }
+
+
+}
+
+@keyframes slide{
+    from {
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
