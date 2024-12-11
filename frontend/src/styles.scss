@@ -1,0 +1,46 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+@use './theme-colors' as colors;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+html, body {
+  @include mat.theme((
+    color: (
+      theme-type: dark,
+      primary: colors.$primary-palette,
+      tertiary: colors.$tertiary-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}/* You can add global styles to this file, and also import other style files */
+
+html, body {
+   height: 100%; 
+  background-color: #262626;
+}
+
+html {
+  font-size: 16px;
+}
+
+body, button {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #FFFFFF;
+}
+
+
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
