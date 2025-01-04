@@ -6,8 +6,7 @@ require('dotenv').config();
 const appController = {
     getTest: async (req, res) => {
         res.status(200).send("This route works just fine!");
-    }
-    ,
+    },
     register: async (req, res) => {
         const { username, password, firstname, lastname, email, company } = req.body;
         if (!username || !password || !firstname || !lastname || !email || !company)
@@ -26,20 +25,17 @@ const appController = {
                 "company": company
             };
 
-
             usersManager.addUser(newUser);
-            res.status(201).json({ "success": `new user ${username} created` })
-        }
-        catch (err) {
+            res.status(201).json({ "success": `new user ${username} created` });
+        } catch (err) {
             res.status(500).json({ "message": err.message });
         }
-
-    }
-    ,
+    },
     login: async (req, res) => {
         const { username, password } = req.body;
         if (!username || !password)
             return res.status(400).json({ 'message': 'username and password required' });
+
         const foundUser = await usersManager.findUser(username);
         if (!foundUser) return res.status(401).json();
 
@@ -51,24 +47,26 @@ const appController = {
                 },
                 process.env.ACCES_TOKEN_SECRET,
                 { expiresIn: "900s" }
-            )
-           
-           
-            res.cookie("jwt",accessToken,{maxAge:24*60*60*1000, sameSite: 'None'});
-            res.status(200).json({accessToken});
-        }
-        else {
+            );
+
+            res.cookie("jwt", accessToken, {
+                maxAge: 24 * 60 * 60 * 1000,
+                sameSite: 'None',
+                secure: true, // Ensure secure attribute is set
+                httpOnly: true
+            });
+            res.status(200).json({ accessToken });
+        } else {
             res.status(401).json();
         }
     },
-    logout:async(req,res)=>{
-        const cookies=req.cookies;
-        if(!cookies?.jwt) return res.status(204).json();
-        res.clearCookie('jwt',{httpOnly:true});
+    logout: async (req, res) => {
+        const cookies = req.cookies;
+        if (!cookies?.jwt) return res.status(204).json();
+        res.clearCookie('jwt', { httpOnly: true, secure: true, sameSite: 'None' });
         return res.status(204).json();
-
     }
-
-}
+};
 
 module.exports = appController;
+
