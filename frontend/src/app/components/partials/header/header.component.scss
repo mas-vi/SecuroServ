@@ -33,5 +33,19 @@ header{
                 background-color: #7e0001;
             }
         }
+
+        button{
+            padding: 1rem;
+            display: inline-block;
+            border: none;
+            background-color: #262626;
+            color: #FFFFFF;
+            cursor: pointer;
+            font: 1.2rem sans-serif;
+
+            &:hover{
+                background-color: #7e0001;
+            }
+        }
     }
 }

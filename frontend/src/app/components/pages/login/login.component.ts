@@ -34,10 +34,22 @@ export class LoginComponent {
 
   addClass() : void {
     this.renderer.addClass(document.querySelector('.container'), 'active');
+    this.loginObject = {
+      "Username": "",
+      "Password": ""
+    }
   }
 
   removeClass() : void {
     this.renderer.removeClass(document.querySelector('.container'), 'active');
+    this.signUpObject = {
+      "Username": "",
+      "Password": "",
+      "Firstname":"",
+      "Lastname":"",
+      "Email": "",
+      "Company": ""
+    }
   }
 
   login(): void{
@@ -54,5 +66,9 @@ export class LoginComponent {
       this.signUpObject.Email,
       this.signUpObject.Company
     );
+    if (this.authService.success)
+      this.removeClass();
+    else
+      alert("Registration failed");
   }
 }

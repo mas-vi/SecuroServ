@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
 import { AboutComponent } from './components/pages/about/about.component';
 import { LoginComponent } from './components/pages/login/login.component';
-
+import { TableComponent } from './components/partials/table/table.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { AuthGuard } from './services/auth.guard';
 
@@ -11,7 +11,17 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate:[AuthGuard]
+        canActivate:[AuthGuard],
+        children: [
+            {
+                path: 'table',
+                component: TableComponent,
+            },
+            {
+                path: '',
+                component: TableComponent,
+            },
+        ]
 
     },
     {

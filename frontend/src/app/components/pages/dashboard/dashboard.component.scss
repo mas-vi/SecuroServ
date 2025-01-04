@@ -1,0 +1,31 @@
+.container{
+    width: 60vw;
+    margin: 0 auto;
+    margin-top: 15vh;
+    padding: 10px 10px 0 10px;
+    background-color: #262626;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  
+    .table-paginator{
+      align-self: center;
+      font-size: 3rem;
+  
+      a{
+        color: #FFFFFF;
+        cursor: pointer;
+        padding: 0 10px;
+
+  
+        &:hover{
+          color: #7e0001;
+        }
+      }
+
+      .active{
+        color: #7e0001;
+    }
+    }
+    
+  }

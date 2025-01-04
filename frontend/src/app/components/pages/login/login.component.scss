@@ -10,6 +10,10 @@
         right: 50%;
     }
 
+    .container.active .form-box.login{
+        visibility: hidden;
+    }
+
     .container.active .form-box.register{
         visibility: visible;
     }
@@ -97,6 +101,10 @@
 
         .form-box.register{
             visibility: hidden;
+        }
+        .form-box.login{
+            visibility: visible;
+            z-index: 2;
         }
 
         h1{
