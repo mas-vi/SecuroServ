@@ -4,7 +4,7 @@ import { Renderer2 } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { AuthService } from '../../../auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ import { AuthService } from '../../../auth.service';
 })
 export class LoginComponent {
   router = inject(Router);
-  authService = inject(AuthService);
+  authService=inject(AuthService);
 
   constructor(private renderer: Renderer2) {}
 
@@ -26,6 +26,8 @@ export class LoginComponent {
   signUpObject : any = {
     "Username": "",
     "Password": "",
+    "Firstname":"",
+    "Lastname":"",
     "Email": "",
     "Company": ""
   }
@@ -39,18 +41,18 @@ export class LoginComponent {
   }
 
   login(): void{
-    console.log(this.loginObject);
-    if(this.loginObject.Username == "123" && this.loginObject.Password == "123"){
-      alert("Login Successful");
-      this.authService.isLoggedIn = true;
-      this.router.navigate(['/dashboard']);
-    }
-    else
-      alert("Login Failed");
+   this.authService.login(this.loginObject.Username,this.loginObject.Password);
+   
   }
   
   register(): void{
-    this.router.navigate(['/']);
-    alert("Registeration Successful");
+    this.authService.register(
+      this.signUpObject.Username,
+      this.signUpObject.Password,
+      this.signUpObject.Firstname,
+      this.signUpObject.Lastname,
+      this.signUpObject.Email,
+      this.signUpObject.Company
+    );
   }
 }

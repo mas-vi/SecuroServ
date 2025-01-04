@@ -5,19 +5,20 @@ const cookieParser = require('cookie-parser');
 
 
 const appRouter=require('./routers/app.router');
-const adminRouter=require('./routers/admin.router');
 
 const app = express()
 const port = 5000
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:4200', // Replace with your frontend URL
+  credentials: true, // Allow cookies to be sent with requests
+}));
 
 app.use(cookieParser());
 
 app.use('/app',appRouter)
-app.use('/admin',adminRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

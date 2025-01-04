@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwtMiddleware=require('../middleware/jwt.middleware');
-const appController=require('../controllers/controller.app');
+const appController=require('../controllers/app.controller');
 
 router.route('/')
     .get(jwtMiddleware.verify,appController.getTest);
