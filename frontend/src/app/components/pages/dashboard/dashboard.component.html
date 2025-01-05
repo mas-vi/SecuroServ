@@ -2,7 +2,7 @@
 <div class="container">
     <router-outlet></router-outlet>
 <div class="table-paginator">
-    <a [ngClass]="status1 ? 'active' : 'inactive'" routerLink="table" (click)="toggleStatus1()">•</a>
+    <a [ngClass]="status1 ? 'active' : 'inactive'" routerLink="incidents" (click)="toggleStatus1()">•</a>
     <a [ngClass]="status2 ? 'active' : 'inactive'"routerLink="table" (click)="toggleStatus2()">•</a>
     <a [ngClass]="status3 ? 'active' : 'inactive'"routerLink="table" (click)="toggleStatus3()">•</a>
     <a [ngClass]="status4 ? 'active' : 'inactive'"routerLink="table" (click)="toggleStatus4()">•</a>
