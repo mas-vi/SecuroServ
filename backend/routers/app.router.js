@@ -12,7 +12,7 @@ router.route('/register')
     .post(appController.register);
 router.route('/logout')
     .get(appController.logout);
-router.route('/table1/:limit')
+router.route('/incidents/:limit')
     .get(jwtMiddleware.verify,tableController.getTable1);
 
 

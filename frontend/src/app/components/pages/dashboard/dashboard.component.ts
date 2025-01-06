@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { TableComponent } from '../../partials/table/table.component';
 import { HeaderComponent } from '../../partials/header/header.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TableService } from '../../../services/table.service';
 
 
 @Component({
@@ -16,6 +17,11 @@ export class DashboardComponent {
   status2: boolean = false;
   status3: boolean = false;
   status4: boolean = false;
+
+  constructor(private tableService:TableService)
+    {
+      
+    }
 
   toggleStatus1() {
     this.status1 = !this.status1;
@@ -44,5 +50,17 @@ export class DashboardComponent {
     this.status3 = false;
     this.status1 = false;
   }
-
+  ngOnInit(): void {
+    this.tableService.getTable1().subscribe({
+      next: (response) => {
+        console.log(response.message);
+        
+      },
+      error: (err) => {
+        console.error('Error fetching table data:', err);
+      }
+    });
+  }
+ 
+    
 }

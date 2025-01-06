@@ -21,17 +21,6 @@ app.use(cookieParser());
 app.use('/app',appRouter)
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-
-
-  // mongoose
-  //   .connect('mongodb+srv://ionut:ionut@cluster0.xqxor.mongodb.net/Cybersecurity_users')
-  //   .connect('mongodb+srv://ionut:ionut@cluster0.xqxor.mongodb.net/Cybersecurity_threats')
-  //   .then(() => {
-  //     console.log("Connected to DB");
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   })
+  console.log(`App listening on port ${port}`);
 
 })

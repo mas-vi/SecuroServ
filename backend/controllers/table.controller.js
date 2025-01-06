@@ -50,12 +50,13 @@ const tableController = {
           const risk_score_name = risk_score ? risk_score.risk_name : "";
           
           return{
-            attacker_id:element.attacker_id,
-            client_name:company_name,
             incident_id:element.incident_id,
+            attacker_id:element.attacker_id,
+            name:company_name,
+            
             log_id:element.log_id,
             response_id:element.response_id,
-            risk_score_name:risk_score_name,
+            risk_name:risk_score_name,
             solved:element.solved
           }
           }
