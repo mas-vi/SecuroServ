@@ -1,0 +1,54 @@
+<div class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource">
+
+    <!-- Incident ID Column -->
+    <ng-container matColumnDef="incident_id">
+      <mat-header-cell *matHeaderCellDef> Incident ID </mat-header-cell>
+      <mat-cell *matCellDef="let incident"> {{incident.incident_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Attacker ID Column -->
+    <ng-container matColumnDef="atacker_id">
+      <mat-header-cell *matHeaderCellDef> Attacker ID </mat-header-cell>
+      <mat-cell *matCellDef="let incident"> {{incident.atacker_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+      <mat-cell *matCellDef="let incident"> {{incident.name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Log ID Column -->
+    <ng-container matColumnDef="log_id">
+      <mat-header-cell *matHeaderCellDef> Log ID </mat-header-cell>
+      <mat-cell *matCellDef="let incident"> {{incident.log_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Response ID Column -->
+    <ng-container matColumnDef="response_id">
+      <mat-header-cell *matHeaderCellDef> Response ID </mat-header-cell>
+      <mat-cell *matCellDef="let incident"> {{incident.response_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Risk Name Column -->
+    <ng-container matColumnDef="risk_name">
+      <mat-header-cell *matHeaderCellDef> Risk Name </mat-header-cell>
+      <mat-cell *matCellDef="let incident"> {{incident.risk_name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Solved Column -->
+    <ng-container matColumnDef="solved">
+      <mat-header-cell *matHeaderCellDef> Solved </mat-header-cell>
+      <mat-cell *matCellDef="let incident">
+        <mat-checkbox [(ngModel)]="incident.solved" disabled></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+  
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+  
+<mat-paginator #paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+</div>
