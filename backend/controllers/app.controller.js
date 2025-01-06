@@ -55,7 +55,7 @@ const appController = {
             )
            
            
-            res.cookie("jwt",accessToken,{maxAge:24*60*60*1000, sameSite: 'None'});
+            res.cookie("jwt",accessToken,{maxAge:24*60*60*1000, sameSite: 'None', secure: true, httpOnly: true});
             res.status(200).json({accessToken});
         }
         else {

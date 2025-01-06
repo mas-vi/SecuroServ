@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TableService {
-  private apiUrl = 'http://localhost:5000/app'; 
-  constructor(private http: HttpClient) { 
-    
+  private apiUrl = '/api';
+  constructor(private http: HttpClient) {
+
   }
    getTable1():Observable<any>
     {
-      return this.http.get(`${this.apiUrl}/`); 
+      return this.http.get(`${this.apiUrl}/`);
     }
 }
 
