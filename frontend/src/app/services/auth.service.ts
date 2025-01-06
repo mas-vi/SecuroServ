@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(username: string, password: string) {
-    console.log("Here")
+   
     return this.http.post(`${this.apiUrl}/login`, { username, password }, { withCredentials: true }).subscribe(
       (response: any) => {
         localStorage.setItem('jwt', response.accessToken);
@@ -38,7 +38,7 @@ export class AuthService {
   isLoggedIn(): boolean {
     const token = localStorage.getItem('jwt');
 
-    console.log(token);
+
     return !!token;
   }
 

@@ -1,4 +1,5 @@
 const { default: mongoose } = require("mongoose");
+const { connectDBs } = require("./db.databases");
 
 const clientSchema=mongoose.Schema(
   {
@@ -25,6 +26,10 @@ const clientSchema=mongoose.Schema(
     company:{
       type:String,
       required:true
+    },
+    isAdmin:{
+      type:Boolean,
+      required:false
     }
   },
   {
@@ -32,4 +37,6 @@ const clientSchema=mongoose.Schema(
   }
 )
 
-module.exports=mongoose.model('Clients',clientSchema);
+const {usersDB}=connectDBs();
+
+module.exports=usersDB.model('Clients',clientSchema);

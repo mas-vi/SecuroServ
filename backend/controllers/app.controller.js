@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const appController = {
     getTest: async (req, res) => {
-        res.status(200).send("This route works just fine!");
+        res.status(200).json({'message':'This route works just fine!'});
     }
     ,
     register: async (req, res) => {
@@ -23,7 +23,8 @@ const appController = {
                 "firstname": firstname,
                 "lastname": lastname,
                 "email": email,
-                "company": company
+                "company": company,
+                "isAdmin":false
             };
 
 
@@ -50,7 +51,7 @@ const appController = {
                     "username": foundUser.username
                 },
                 process.env.ACCES_TOKEN_SECRET,
-                { expiresIn: "900s" }
+                { expiresIn: "90000s" }
             )
            
            

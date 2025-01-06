@@ -1,5 +1,4 @@
 const clientModel=require('../data/clients.models');
-const mongoose = require('mongoose');
 
 const clientManager={
 

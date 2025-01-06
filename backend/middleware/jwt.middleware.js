@@ -4,10 +4,14 @@ require('dotenv').config();
 const jwtMiddleware={
 
     verify:async(req,res,next)=>{
-        const token = req.cookies.jwt;
-        
-        if(!token)
-            return res.status(401).json();
+        const authHeader = req.headers.authorization;
+
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            return res.status(401).json({ 'message': 'Unauthorized' });
+        }
+
+        const token = authHeader.split(' ')[1]; 
+
         
      
         jwt.verify(
@@ -20,6 +24,7 @@ const jwtMiddleware={
             }
         )
     }
+    
 }
 
 module.exports=jwtMiddleware;
