@@ -50,9 +50,8 @@ export class AuthService {
     
     return this.http.post(`${this.apiUrl}/register`, { username, password,firstname,lastname,email,company }, { withCredentials: true }).subscribe(
       (response: any) => {
-       
-        this.router.navigate(['/login']);
         this.success = true;
+        this.router.navigate(['/login']);
       },
       (error) => {
         console.error('Login failed', error);
