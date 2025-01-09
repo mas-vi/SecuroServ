@@ -9,7 +9,12 @@ export class AuthService {
   private apiUrl = 'http://localhost:5000/app'; 
   success: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    if (this.isLoggedIn()) {
+      this.success = true;
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   login(username: string, password: string) {
    
@@ -21,6 +26,7 @@ export class AuthService {
         
       },
       (error) => {
+        alert("Invalid Username or Password");
         console.error('Login failed', error);
       }
     );
@@ -30,7 +36,7 @@ export class AuthService {
     this.http.get(`${this.apiUrl}/logout`).subscribe(() => {
       
       localStorage.removeItem('jwt');
-
+      this.success = false;
       this.router.navigate(['/login']);
     });
   }
@@ -48,15 +54,6 @@ export class AuthService {
   }
   register(username: string, password: string,firstname:string,lastname:string,email:string,company:string) {
     
-    return this.http.post(`${this.apiUrl}/register`, { username, password,firstname,lastname,email,company }, { withCredentials: true }).subscribe(
-      (response: any) => {
-       
-        this.router.navigate(['/login']);
-        this.success = true;
-      },
-      (error) => {
-        console.error('Login failed', error);
-      }
-    );
+    return this.http.post(`${this.apiUrl}/register`, { username, password,firstname,lastname,email,company }, { withCredentials: true });
   }
 }

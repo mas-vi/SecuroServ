@@ -65,10 +65,15 @@ export class LoginComponent {
       this.signUpObject.Lastname,
       this.signUpObject.Email,
       this.signUpObject.Company
-    );
-    if (this.authService.success)
-      this.removeClass();
-    else
-      alert("Registration failed");
+    ).
+    subscribe((response: any) => {
+          this.authService.success = true;
+          this.removeClass();
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          alert("Registration failed");
+          console.error('Login failed', error);
+        });
   }
 }

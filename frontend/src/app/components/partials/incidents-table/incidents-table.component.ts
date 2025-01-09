@@ -16,7 +16,7 @@ import { Incident } from '../../../interfaces/incident';
 
 export class IncidentsTableComponent implements AfterViewInit { 
   incidentService = inject(IncidentService);
-  displayedColumns: string[] = ['incident_id', 'atacker_id', 'name', 'log_id', 'response_id', 'risk_name', 'solved'];
+  displayedColumns: string[] = ['incident_id', 'attacker_id', 'log_id', 'name', 'response_id', 'risk_name', 'solved'];
   dataSource = new MatTableDataSource<Incident>();
 
 
@@ -25,63 +25,15 @@ export class IncidentsTableComponent implements AfterViewInit {
   
 
   ngAfterViewInit() {
-    //this.dataSource.loadIncidents();
-    /*this.incidentService.getIncidents().subscribe(data => {
-      this.dataSource.data = data;
+    this.incidentService.getIncidents().subscribe(data => {
+      console.log(data.data);
+      for (let i = 0; i < data.data.length; i++) {
+        data.data[i].solved = data.data[i].solved === 'true';
+      }
+      this.dataSource = new MatTableDataSource<Incident>(data.data);
       this.dataSource.paginator = this.paginator;
-    });*/
-
-    this.dataSource.data = data;
-    this.dataSource.paginator = this.paginator;
+    });
   }
 
 }
-
-const data: Incident[] = [
-  {
-    incident_id: 'INC001',
-    atacker_id: 'ATK001',
-    name: 'Unauthorized Access Attempt',
-    log_id: 'LOG001',
-    response_id: 'RESP001',
-    risk_name: 'High',
-    solved: false,
-  },
-  {
-    incident_id: 'INC002',
-    atacker_id: 'ATK002',
-    name: 'Phishing Email Detected',
-    log_id: 'LOG002',
-    response_id: 'RESP002',
-    risk_name: 'Medium',
-    solved: true,
-  },
-  {
-    incident_id: 'INC003',
-    atacker_id: 'ATK003',
-    name: 'Data Breach Detected',
-    log_id: 'LOG003',
-    response_id: 'RESP003',
-    risk_name: 'Critical',
-    solved: false,
-  },
-  {
-    incident_id: 'INC004',
-    atacker_id: 'ATK004',
-    name: 'Malware Installation',
-    log_id: 'LOG004',
-    response_id: 'RESP004',
-    risk_name: 'High',
-    solved: true,
-  },
-  {
-    incident_id: 'INC005',
-    atacker_id: 'ATK005',
-    name: 'Denial of Service (DoS)',
-    log_id: 'LOG005',
-    response_id: 'RESP005',
-    risk_name: 'Critical',
-    solved: false,
-  },
-];
 
