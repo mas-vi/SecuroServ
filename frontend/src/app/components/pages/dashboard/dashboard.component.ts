@@ -3,7 +3,6 @@ import { TableComponent } from '../../partials/table/table.component';
 import { HeaderComponent } from '../../partials/header/header.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { TableService } from '../../../services/table.service';
 
 
 @Component({
@@ -18,7 +17,7 @@ export class DashboardComponent {
   status3: boolean = false;
   status4: boolean = false;
 
-  constructor(private tableService:TableService)
+  constructor()
     {
       
     }
@@ -49,17 +48,6 @@ export class DashboardComponent {
     this.status2 = false;
     this.status3 = false;
     this.status1 = false;
-  }
-  ngOnInit(): void {
-    this.tableService.getTable1().subscribe({
-      next: (response) => {
-        console.log(response.message);
-        
-      },
-      error: (err) => {
-        console.error('Error fetching table data:', err);
-      }
-    });
   }
  
     

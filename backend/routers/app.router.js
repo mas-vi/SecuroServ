@@ -3,6 +3,8 @@ const router = express.Router();
 const jwtMiddleware=require('../middleware/jwt.middleware');
 const appController=require('../controllers/app.controller');
 const tableController=require('../controllers/table.controller');
+
+
 router.route('/')
     .get(jwtMiddleware.verify,appController.getTest);
 
