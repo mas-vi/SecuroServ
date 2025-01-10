@@ -28,7 +28,7 @@
     <!-- Response ID Column -->
     <ng-container matColumnDef="response_id">
       <mat-header-cell *matHeaderCellDef> Response ID </mat-header-cell>
-      <mat-cell *matCellDef="let incident"> {{incident.response_id}} </mat-cell>
+      <mat-cell (click)="fetchResponse(incident.response_id)" *matCellDef="let incident"> {{incident.response_id}} </mat-cell>
     </ng-container>
   
     <!-- Risk Name Column -->
@@ -37,13 +37,25 @@
       <mat-cell *matCellDef="let incident"> {{incident.risk_name}} </mat-cell>
     </ng-container>
   
+
+    <div *ngIf="isAdmin()">
+      <ng-container matColumnDef="solved">
+        <mat-header-cell *matHeaderCellDef> Solved </mat-header-cell>
+        <mat-cell *matCellDef="let incident">
+          <mat-checkbox [(ngModel)]="incident.solved"></mat-checkbox>
+        </mat-cell>
+      </ng-container>
+    </div>
+
     <!-- Solved Column -->
+     <div *ngIf="!isAdmin()">
     <ng-container matColumnDef="solved">
       <mat-header-cell *matHeaderCellDef> Solved </mat-header-cell>
       <mat-cell *matCellDef="let incident">
         <mat-checkbox [(ngModel)]="incident.solved" disabled></mat-checkbox>
       </mat-cell>
     </ng-container>
+  </div>
   
     <!-- Header and Row Declarations -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

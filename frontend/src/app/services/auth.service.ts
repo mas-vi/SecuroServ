@@ -3,6 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {jwtDecode } from 'jwt-decode';
 
+interface JwtCustomPayload {
+  username: string;
+  name: string;
+  isAdmin: boolean;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,7 +28,10 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, { username, password }, { withCredentials: true }).subscribe(
       (response: any) => {
         localStorage.setItem('jwt', response.accessToken);
-       const decoded=jwtDecode(response.accessToken);
+       const decoded=jwtDecode<JwtCustomPayload>(response.accessToken);
+       localStorage.setItem('user', decoded.username);
+       localStorage.setItem('name', decoded.name);
+       localStorage.setItem('isAdmin', decoded.isAdmin.toString());
        console.log(decoded);
         this.router.navigate(['/dashboard']);
         
@@ -38,6 +47,9 @@ export class AuthService {
     this.http.get(`${this.apiUrl}/logout`).subscribe(() => {
       
       localStorage.removeItem('jwt');
+      localStorage.removeItem('user');
+      localStorage.removeItem('name');
+      localStorage.removeItem('isAdmin');
       this.success = false;
       this.router.navigate(['/login']);
     });
