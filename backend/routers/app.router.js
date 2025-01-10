@@ -16,6 +16,8 @@ router.route('/logout')
     .get(appController.logout);
 router.route('/incidents/:limit')
     .get(jwtMiddleware.verify,tableController.getTable1);
+router.route('/responses/:id')
+    .get(jwtMiddleware.verify,tableController.getResponseByID);
 
 
 module.exports = router;
