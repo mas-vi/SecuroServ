@@ -59,7 +59,8 @@ const appController = {
 
             const accessToken = jwt.sign(
                 { 
-                    username: foundUser.firstname,
+                    username: foundUser.username,
+                    name: foundUser.firstname,
                     isAdmin: foundUser.isAdmin,
                  },
                 process.env.ACCES_TOKEN_SECRET,
