@@ -5,13 +5,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ThreatService {
-  private apiUrl = 'http://localhost:5000/app/threats/50';
+export class ResponseService {
+  private apiUrl = 'http://localhost:5000/app/responses/';
   http = inject(HttpClient);
 
   constructor() { }
 
-  getThreats(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  getResponse(id: string): Observable<any> {
+    return this.http.get(this.apiUrl + id);
   }
 }
