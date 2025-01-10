@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,8 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, { username, password }, { withCredentials: true }).subscribe(
       (response: any) => {
         localStorage.setItem('jwt', response.accessToken);
-
+       const decoded=jwtDecode(response.accessToken);
+       console.log(decoded);
         this.router.navigate(['/dashboard']);
         
       },
