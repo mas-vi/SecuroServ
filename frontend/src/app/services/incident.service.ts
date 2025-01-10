@@ -7,11 +7,11 @@ import { Incident } from '../interfaces/incident';
   providedIn: 'root'
 })
 export class IncidentService {
-  private apiUrl = '/api/incidents';
+  private apiUrl = '/api/incidents/50';
 
   constructor(private http: HttpClient) { }
 
-  getIncidents(): Observable<Incident[]> {
-    return this.http.get<Incident[]>(this.apiUrl);
+  getIncidents(): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
 }

@@ -58,13 +58,18 @@ const appController = {
             }
 
             const accessToken = jwt.sign(
-                { username: foundUser.username },
+                { 
+                    username: foundUser.username,
+                    name: foundUser.firstname,
+                    isAdmin: foundUser.isAdmin,
+                 },
                 process.env.ACCES_TOKEN_SECRET,
-                { expiresIn: "900s" } // 15 minutes
+                { expiresIn: "900s" } 
             );
+            
 
             res.cookie("jwt", accessToken, {
-                maxAge: 24 * 60 * 60 * 1000, // 1 day
+                maxAge: 24 * 60 * 60 * 1000, 
                 sameSite: 'None',
                 secure: true,
                 httpOnly: true,
@@ -80,7 +85,7 @@ const appController = {
         const cookies = req.cookies;
 
         if (!cookies?.jwt) {
-            return res.status(204).json(); // No content
+            return res.status(204).json(); 
         }
 
         res.clearCookie('jwt', {
@@ -94,5 +99,4 @@ const appController = {
 };
 
 module.exports = appController;
-
 
