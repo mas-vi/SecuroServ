@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FooterComponent } from '../../partials/footer/footer.component';
 import { HeaderComponent } from '../../partials/header/header.component';
-import { PartenerSliderComponent } from '../../partials/partener-slider/partener-slider.component';
 import { RouterModule } from '@angular/router';
 
 export interface DialogData {
@@ -11,7 +10,7 @@ export interface DialogData {
 
 @Component({
   selector: 'app-home',
-  imports: [FooterComponent, HeaderComponent, PartenerSliderComponent, RouterModule],
+  imports: [FooterComponent, HeaderComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
