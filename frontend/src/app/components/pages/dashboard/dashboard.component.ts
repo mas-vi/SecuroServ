@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [TableComponent, HeaderComponent, RouterModule, CommonModule],
+  imports: [HeaderComponent, RouterModule, CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -16,6 +16,8 @@ export class DashboardComponent {
   status2: boolean = false;
   status3: boolean = false;
   status4: boolean = false;
+
+  name: string = localStorage.getItem('name') || 'User';
 
   constructor()
     {

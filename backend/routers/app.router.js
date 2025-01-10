@@ -18,6 +18,8 @@ router.route('/incidents/:limit')
     .get(jwtMiddleware.verify,tableController.getTable1);
 router.route('/responses/:id')
     .get(jwtMiddleware.verify,tableController.getResponseByID);
+router.route('/attackers/:id')
+    .get(jwtMiddleware.verify,tableController.getAttackerByID);
 
 
 module.exports = router;
