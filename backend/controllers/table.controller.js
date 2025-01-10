@@ -3,6 +3,8 @@ const usersManager=require('../managers/users.managers');
 const companyManager=require('../managers/companies.managers');
 const riskScoresManager=require('../managers/riskScores.managers');
 
+const responsesManager=require('../managers/responses.managers' );
+
 const tableController = {
   getTable1:async(req,res)=>{
     const user=await usersManager.findUser(req.user);
@@ -73,8 +75,23 @@ const tableController = {
         res.status(500).json({'error':err});
     }
     }
-   
-    
+   ,
+   getResponseByID:async(req,res)=>{  
+    try{
+        const response=await responsesManager.getByID(req.params.id);
+        
+        if(!response)
+        {
+            res.status(404).json({'message':'Response not found'});
+        }
+        else res.status(200).json({'data':response});
+       
+    }
+    catch(err)
+    {
+        res.status(500).json({'error':err});
+    }
+  }
 }
 
 module.exports = tableController;
