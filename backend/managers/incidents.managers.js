@@ -13,7 +13,18 @@ const incidentsManager = {
             .sort({ _id: -1 }) 
             .limit(filter_by_number); 
         return incidents;
+    },
+    getNumberOfIncidents:async(attacker_id)=>{
+        const incidents=await incidentsModel.find({attacker_id:attacker_id});
+        return incidents.length;
     }
+    ,
+    getNumberOfIncidentsPerCompany:async(attacker_id,client_id)=>{
+        const incidents=await incidentsModel.find({attacker_id:attacker_id,client_id:client_id});
+        return incidents.length;
+    }
+
+   
 }
 
 module.exports=incidentsManager;
