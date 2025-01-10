@@ -94,15 +94,15 @@ const tableController = {
   getAttackerByID: async (req, res) => {
 
     try {
-      const user = await usersManager.findUser(req.user);
+
       const attacker = await attackersManager.getAttackerByID(req.params.id);
-      const company=await companyManager.getCompanyID(user.company);
+
       if (!attacker) {
         res.status(404).json({ 'message': 'Attacker not found' });
       }
       else {
 
-        
+
 
 
 
@@ -116,7 +116,7 @@ const tableController = {
           attacker_id: attacker.attacker_id,
           region_continent: region_continent,
           region_country: region_country,
-          
+
         }
 
 
@@ -130,6 +130,34 @@ const tableController = {
       res.status(500).json({ 'error': err });
     }
   }
+  ,
+  solveIncidentByID: async (req, res) => {
+
+    try {
+
+      const user = await usersManager.findUser(req.user);
+      if (!user.isAdmin)
+        res.status(401).json({ 'message': 'Unauthorized' });
+      else {
+        const incident = await incidentsManager.getIncidentByID(req.params.id);
+        if (!incident) {
+          res.status(404).json({ 'message': 'Incident not found' });
+        }
+        else {
+          await incidentsManager.solveIncidentByID(req.params.id);
+          res.status(200).json({ 'message': 'Incident solved' });
+        }
+      }
+    }
+
+
+    catch (err) {
+      res.status(500).json({ 'error': err });
+    }
+
+  }
+
+
 }
 
 

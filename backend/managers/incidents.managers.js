@@ -1,3 +1,4 @@
+const { solveIncident } = require('../controllers/table.controller');
 const incidentsModel=require('../data/incidents.models');
 
 const incidentsManager = {
@@ -14,15 +15,15 @@ const incidentsManager = {
             .limit(filter_by_number); 
         return incidents;
     },
-    getNumberOfIncidents:async(attacker_id)=>{
-        const incidents=await incidentsModel.find({attacker_id:attacker_id});
-        return incidents.length;
+    getIncidentByID:async(incident_id)=>{   
+        const result=await incidentsModel.findOne({incident_id:incident_id});
+        return result;
+    },
+    solveIncidentByID:async(incident_id)=>{
+        const result=await incidentsModel.findOneAndUpdate({incident_id:incident_id},{solved:true});
+        return result;
     }
-    ,
-    getNumberOfIncidentsPerCompany:async(attacker_id,client_id)=>{
-        const incidents=await incidentsModel.find({attacker_id:attacker_id,client_id:client_id});
-        return incidents.length;
-    }
+    
 
    
 }

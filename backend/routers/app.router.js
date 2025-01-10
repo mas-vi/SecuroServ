@@ -20,6 +20,7 @@ router.route('/responses/:id')
     .get(jwtMiddleware.verify,tableController.getResponseByID);
 router.route('/attackers/:id')
     .get(jwtMiddleware.verify,tableController.getAttackerByID);
-
+router.route('/incidents/solve/:id')
+    .patch(jwtMiddleware.verify,tableController.solveIncidentByID);
 
 module.exports = router;

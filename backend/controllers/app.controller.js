@@ -64,7 +64,7 @@ const appController = {
                     isAdmin: foundUser.isAdmin,
                  },
                 process.env.ACCES_TOKEN_SECRET,
-                { expiresIn: "900s" } 
+                { expiresIn: "900000s" } 
             );
             
 
