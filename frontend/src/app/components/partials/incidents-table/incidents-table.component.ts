@@ -9,6 +9,8 @@ import { NgIf } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ResponseService } from '../../../services/response.service';
 import { ResponseDialogComponent } from '../response-dialog/response-dialog.component';
+import { AttackDialogComponent } from '../attack-dialog/attack-dialog.component';
+import { AttackService } from '../../../services/attack.service';
 
 @Component({
   selector: 'app-incidents-table',
@@ -24,9 +26,12 @@ export class IncidentsTableComponent implements AfterViewInit {
   displayedColumns: string[] = ['incident_id', 'attacker_id', 'log_id', 'name', 'response_id', 'risk_name', 'solved'];
   dataSource = new MatTableDataSource<Incident>();
   responseService = inject(ResponseService);
+  attackService = inject(AttackService);
 
   time: string;
   team: string;
+  continent: string;
+  country: string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -49,10 +54,17 @@ export class IncidentsTableComponent implements AfterViewInit {
 
   fetchResponse(id: string) {
     this.responseService.getResponse(id).subscribe(data => {
-      console.log(data);
       this.time = data.data.response_time;
       this.team = data.data.security_team_id;
       this.openResponseDialog();
+    });
+  }
+
+  fetchAttacker(id: string) {
+    this.attackService.getAttack(id).subscribe(data => {
+      this.continent = data.data.region_continent;
+      this.country = data.data.region_country;
+      this.openAttackDialog();
     });
   }
 
@@ -65,5 +77,14 @@ export class IncidentsTableComponent implements AfterViewInit {
     });
   }
 
+  openAttackDialog() : void {
+    const dialogRef = this.dialog.open(AttackDialogComponent, {
+      data: {
+        continent: this.continent,
+        country: this.country,
+      }
+    });
+
+  }
 }
 

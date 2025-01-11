@@ -10,7 +10,7 @@
     <!-- Attacker ID Column -->
     <ng-container matColumnDef="attacker_id">
       <mat-header-cell *matHeaderCellDef> Attacker ID </mat-header-cell>
-      <mat-cell *matCellDef="let incident"> {{incident.attacker_id}} </mat-cell>
+      <mat-cell class="cursor-pointer" (click)="fetchAttacker(incident.attacker_id)" *matCellDef="let incident"> {{incident.attacker_id}} </mat-cell>
     </ng-container>
   
     <!-- Name Column -->
@@ -28,7 +28,8 @@
     <!-- Response ID Column -->
     <ng-container matColumnDef="response_id">
       <mat-header-cell *matHeaderCellDef> Response ID </mat-header-cell>
-      <mat-cell (click)="fetchResponse(incident.response_id)" *matCellDef="let incident"> {{incident.response_id}} </mat-cell>
+      <mat-cell class="cursor-pointer"
+      (click)="fetchResponse(incident.response_id)" *matCellDef="let incident"> {{incident.response_id}} </mat-cell>
     </ng-container>
   
     <!-- Risk Name Column -->
