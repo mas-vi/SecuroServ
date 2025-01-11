@@ -54,7 +54,6 @@ export class LoginComponent {
 
   login(): void{
    this.authService.login(this.loginObject.Username,this.loginObject.Password);
-   
   }
   
   register(): void{

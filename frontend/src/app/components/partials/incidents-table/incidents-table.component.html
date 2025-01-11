@@ -43,7 +43,7 @@
       <ng-container matColumnDef="solved">
         <mat-header-cell *matHeaderCellDef> Solved </mat-header-cell>
         <mat-cell *matCellDef="let incident">
-          <mat-checkbox [(ngModel)]="incident.solved"></mat-checkbox>
+          <mat-checkbox (click)="changeSolved(incident.incident_id, incident.solved)" [(ngModel)]="incident.solved"></mat-checkbox>
         </mat-cell>
       </ng-container>
     </div>

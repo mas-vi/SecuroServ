@@ -14,4 +14,8 @@ export class IncidentService {
   getIncidents(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+
+  changeSolvedStatus(id: string, solved: boolean): Observable<any> {
+    return this.http.patch(`http://localhost:5000/app/incidents/solve/${id}`, {solved});
+  }
 }

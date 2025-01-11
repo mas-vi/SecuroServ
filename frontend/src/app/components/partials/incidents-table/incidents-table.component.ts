@@ -86,5 +86,11 @@ export class IncidentsTableComponent implements AfterViewInit {
     });
 
   }
+
+  changeSolved(id: string, solved: boolean) {
+    this.incidentService.changeSolvedStatus(id, solved).subscribe(data => {
+      this.ngAfterViewInit();
+    });
+  }
 }
 

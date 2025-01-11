@@ -144,7 +144,7 @@ const tableController = {
           res.status(404).json({ 'message': 'Incident not found' });
         }
         else {
-          await incidentsManager.solveIncidentByID(req.params.id);
+          await incidentsManager.solveIncidentByID(req.params.id, req.body.solved);
           res.status(200).json({ 'message': 'Incident solved' });
         }
       }

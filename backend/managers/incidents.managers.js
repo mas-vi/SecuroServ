@@ -19,8 +19,8 @@ const incidentsManager = {
         const result=await incidentsModel.findOne({incident_id:incident_id});
         return result;
     },
-    solveIncidentByID:async(incident_id)=>{
-        const result=await incidentsModel.findOneAndUpdate({incident_id:incident_id},{solved:true});
+    solveIncidentByID:async(incident_id, solved)=>{
+        const result=await incidentsModel.findOneAndUpdate({incident_id:incident_id},{solved:solved});
         return result;
     }
     

@@ -32,7 +32,6 @@ export class AuthService {
        localStorage.setItem('user', decoded.username);
        localStorage.setItem('name', decoded.name);
        localStorage.setItem('isAdmin', decoded.isAdmin.toString());
-       console.log(decoded);
         this.router.navigate(['/dashboard']);
         
       },
@@ -57,8 +56,6 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     const token = localStorage.getItem('jwt');
-
-
     return !!token;
   }
 
@@ -70,4 +67,5 @@ export class AuthService {
     
     return this.http.post(`${this.apiUrl}/register`, { username, password,firstname,lastname,email,company }, { withCredentials: true });
   }
+
 }
