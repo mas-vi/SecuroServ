@@ -12,13 +12,13 @@ const port = 5000
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://localhost:4200',
+  origin: 'https://phoenixovich.systems',
   credentials: true, 
 }));
 
 app.use(cookieParser());
 
-app.use('/app',appRouter)
+app.use('/api',appRouter)
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
