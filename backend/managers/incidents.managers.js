@@ -1,4 +1,3 @@
-const { solveIncident } = require('../controllers/table.controller');
 const incidentsModel=require('../data/incidents.models');
 
 const incidentsManager = {

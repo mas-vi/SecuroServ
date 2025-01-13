@@ -6,6 +6,9 @@ const riskScoresManager = require('../managers/riskScores.managers');
 const responsesManager = require('../managers/responses.managers');
 const attackersManager = require('../managers/attackers.managers');
 const regionsManager = require('../managers/regions.managers');
+const investigationsManager = require('../managers/investigations.managers');
+const vulnerabilitiesManager = require('../managers/vulnerabilities.managers');
+const threatsManager=require('../managers/threats.managers');
 
 
 const tableController = {
@@ -155,9 +158,61 @@ const tableController = {
       res.status(500).json({ 'error': err });
     }
 
+  },
+  getTable2: async (req, res) => {
+
+    try {
+      //Verificam ca e admin????
+      // const user = await usersManager.findUser(req.user);
+
+      // if (!user.isAdmin)
+      //   res.status(401).json({ 'message': 'Unauthorized' });
+
+
+      const investigations = await investigationsManager.getAllInvestigations(req.params.limit);
+
+      const vulnerabilities = await vulnerabilitiesManager.getAllVulnerabilities();
+
+
+      const processedResults = investigations.map((investigation) => {
+        const vulnerability = vulnerabilities.find((vul) => {
+
+          return vul.vulnerability_id === investigation.vulnerability_id;
+        });
+        const vulnerability_name = vulnerability ? vulnerability.vulnerability_name : "";
+        return {
+          investigation_id: investigation.investigation_id,
+          investigation_name: investigation.investigation_name,
+          solution_id: investigation.solution_id,
+          impact_id: investigation.impact_id,
+          security_team_id: investigation.security_team_id,
+          vulnerability_name: vulnerability_name
+        }
+      });
+      res.status(200).json({ 'data': processedResults });
+    }
+
+
+    catch (err) {
+      res.status(500).json({ 'error': err });
+
+    }
+
+
+  },
+  getTable3: async (req, res) => {
+    try {
+      const threats=await threatsManager.getAllThreats(req.params.limit);
+      res.status(200).json({'data':threats});
+
+
+    }
+    catch (err) {
+      res.status(500).json({ 'error': err });
+
+
+    }
   }
-
-
 }
 
 

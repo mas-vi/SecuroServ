@@ -22,5 +22,8 @@ router.route('/attackers/:id')
     .get(jwtMiddleware.verify,tableController.getAttackerByID);
 router.route('/incidents/solve/:id')
     .patch(jwtMiddleware.verify,tableController.solveIncidentByID);
-
+router.route('/investigations/:limit')
+    .get(jwtMiddleware.verify,tableController.getTable2);
+router.route('/threats/:limit')
+    .get(jwtMiddleware.verify,tableController.getTable3);
 module.exports = router;
