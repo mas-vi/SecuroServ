@@ -26,7 +26,4 @@ router.route('/investigations/:limit')
     .get(jwtMiddleware.verify,tableController.getTable2);
 router.route('/threats/:limit')
     .get(jwtMiddleware.verify,tableController.getTable3);
-router.route('/solutions/:id')
-    .get(jwtMiddleware.verify,tableController.getSolutionByID);
-
 module.exports = router;
