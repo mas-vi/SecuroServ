@@ -6,6 +6,8 @@ import { TableComponent } from './components/partials/table/table.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { AuthGuard } from './services/auth.guard';
 import { IncidentsTableComponent } from './components/partials/incidents-table/incidents-table.component';
+import { InvestigationsTableComponent } from './components/partials/investigations-table/investigations-table.component';
+import { ThreatsTableComponent } from './components/partials/threats-table/threats-table.component';
 
 export const routes: Routes = [
     
@@ -21,6 +23,14 @@ export const routes: Routes = [
             {
                 path: 'incidents',
                 component: IncidentsTableComponent,
+            },
+            {
+                path: 'investigations',
+                component: InvestigationsTableComponent,
+            },
+            {
+                path: 'threats',
+                component: ThreatsTableComponent,
             },
             {
                 path: '',

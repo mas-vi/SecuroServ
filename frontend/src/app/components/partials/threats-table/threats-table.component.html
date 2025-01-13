@@ -1,0 +1,38 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Threat ID Column -->
+    <ng-container matColumnDef="threat_id">
+      <mat-header-cell *matHeaderCellDef> Threat ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.threat_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Threat Name Column -->
+    <ng-container matColumnDef="threat_name">
+      <mat-header-cell *matHeaderCellDef> Threat Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.threat_name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Threat Type Column -->
+    <ng-container matColumnDef="threat_type">
+      <mat-header-cell *matHeaderCellDef> Threat Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.threat_type}} </mat-cell>
+    </ng-container>
+  
+    <!-- Attack Pattern ID Column -->
+    <ng-container matColumnDef="attack_pattern_id">
+      <mat-header-cell *matHeaderCellDef> Attack Pattern ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.attack_pattern_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Vulnerability ID Column -->
+    <ng-container matColumnDef="vulnerability_id">
+      <mat-header-cell *matHeaderCellDef> Vulnerability ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.vulnerability_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5]"></mat-paginator>

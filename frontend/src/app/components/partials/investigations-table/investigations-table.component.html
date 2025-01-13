@@ -1,0 +1,44 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Investigation ID Column -->
+    <ng-container matColumnDef="investigation_id">
+      <mat-header-cell *matHeaderCellDef> Investigation ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.investigation_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Investigation Name Column -->
+    <ng-container matColumnDef="investigation_name">
+      <mat-header-cell *matHeaderCellDef> Investigation Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.investigation_name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Solution ID Column -->
+    <ng-container matColumnDef="solution_id">
+      <mat-header-cell *matHeaderCellDef> Solution ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.solution_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Impact ID Column -->
+    <ng-container matColumnDef="impact_id">
+      <mat-header-cell *matHeaderCellDef> Impact ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.impact_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Security Team ID Column -->
+    <ng-container matColumnDef="security_team_id">
+      <mat-header-cell *matHeaderCellDef> Security Team ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.security_team_id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Vulnerability Name Column -->
+    <ng-container matColumnDef="vulnerability_name">
+      <mat-header-cell *matHeaderCellDef> Vulnerability Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.vulnerability_name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+  </mat-table>
+<mat-paginator #paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
