@@ -15,7 +15,7 @@
     <!-- Solution ID Column -->
     <ng-container matColumnDef="solution_id">
       <mat-header-cell *matHeaderCellDef> Solution ID </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.solution_id}} </mat-cell>
+      <mat-cell class="cursor-pointer" (click)='fetchSolution(element.solution_id)' *matCellDef="let element"> {{element.solution_id}} </mat-cell>
     </ng-container>
   
     <!-- Impact ID Column -->
