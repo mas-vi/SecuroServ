@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SolutionService {
-  private apiUrl = 'http://localhost:5000/app/solutions/';
+  private apiUrl = '/api/solutions/';
   http = inject(HttpClient);
 
   getSolution(id: string): Observable<any> {
