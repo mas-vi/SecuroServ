@@ -13,7 +13,7 @@ interface JwtCustomPayload {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/app'; 
+  private apiUrl = '/api'; 
   success: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {

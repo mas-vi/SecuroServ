@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ResponseService {
-  private apiUrl = 'http://localhost:5000/app/responses/';
+  private apiUrl = '/api/responses/';
   http = inject(HttpClient);
 
   constructor() { }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class InvestigationService {
-  private apiUrl = 'http://localhost:5000/app/investigations/40';
+  private apiUrl = '/api/investigations/40';
   http = inject(HttpClient);
 
   getInvestigations(): Observable<any> {

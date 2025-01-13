@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AttackService {
-  private apiUrl = 'http://localhost:5000/app/attackers/';
+  private apiUrl = '/api/attackers/';
   http = inject(HttpClient);
   constructor() { }
 

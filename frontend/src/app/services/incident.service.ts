@@ -7,7 +7,7 @@ import { Incident } from '../interfaces/incident';
   providedIn: 'root'
 })
 export class IncidentService {
-  private apiUrl = 'http://localhost:5000/app/incidents/50';
+  private apiUrl = '/api/incidents/50';
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +16,6 @@ export class IncidentService {
   }
 
   changeSolvedStatus(id: string, solved: boolean): Observable<any> {
-    return this.http.patch(`http://localhost:5000/app/incidents/solve/${id}`, {solved});
+    return this.http.patch(`/api/incidents/solve/${id}`, {solved});
   }
 }
