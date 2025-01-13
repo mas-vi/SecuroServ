@@ -189,7 +189,11 @@ const tableController = {
           vulnerability_name: vulnerability_name
         }
       });
-      res.status(200).json({ 'data': processedResults });
+      const filteredResults = processedResults.filter((element) => {
+        return element.vulnerability_name !== "";
+      });
+      res.status(200).json({ 'data': filteredResults });
+      
     }
 
 
