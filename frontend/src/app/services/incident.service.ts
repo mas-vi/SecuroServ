@@ -7,7 +7,7 @@ import { Incident } from '../interfaces/incident';
   providedIn: 'root'
 })
 export class IncidentService {
-  private apiUrl = '/api/incidents/50';
+  private apiUrl = 'api/incidents/50';
 
   constructor(private http: HttpClient) { }
 
