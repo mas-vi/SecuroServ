@@ -9,6 +9,7 @@ const regionsManager = require('../managers/regions.managers');
 const investigationsManager = require('../managers/investigations.managers');
 const vulnerabilitiesManager = require('../managers/vulnerabilities.managers');
 const threatsManager=require('../managers/threats.managers');
+const  solutionsManager  = require('../managers/solutions.managers');
 
 
 const tableController = {
@@ -217,6 +218,22 @@ const tableController = {
 
     }
   }
+  ,
+  getSolutionByID: async (req, res) => {
+
+    try {
+      const solution = await solutionsManager.getSolutionByID(req.params.id);
+      if (!solution) {
+        res.status(404).json({ 'message': 'Solution not found' });
+      }
+      else res.status(200).json({ 'data': solution });
+
+    }
+    catch (err) {
+      res.status(500).json({ 'error': err });
+
+  }
+}
 }
 
 
