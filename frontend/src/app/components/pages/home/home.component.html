@@ -8,7 +8,11 @@
         maintain compliance with industry standards, giving them peace of mind in an increasingly digital world.</p>
     <div class="button-container">
         <a routerLink="/about"><button>Learn More</button></a>
-        <a routerLink="/login"><button>Sign In</button></a>
-    </div>
+        <div *ngIf="!this.authService.isLoggedIn()">
+            <a routerLink="/login"><button>Sign In</button></a>
+        </div>
+        <div *ngIf="this.authService.isLoggedIn()">
+            <a routerLink="/dashboard"><button>Dashboard</button></a>
+        </div>
 </div>
 <app-footer></app-footer>
