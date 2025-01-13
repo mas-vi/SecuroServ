@@ -39,7 +39,6 @@ export class IncidentsTableComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.incidentService.getIncidents().subscribe(data => {
-      console.log(data.data);
       for (let i = 0; i < data.data.length; i++) {
         data.data[i].solved = data.data[i].solved === 'true';
       }

@@ -19,7 +19,6 @@ export class InvestigationsTableComponent implements AfterViewInit{
 
   ngAfterViewInit() {
     this.investigationsService.getInvestigations().subscribe(data => {
-      console.log(data.data);
       this.dataSource = new MatTableDataSource<Investigation>(data.data);
       this.dataSource.paginator = this.paginator;
     });

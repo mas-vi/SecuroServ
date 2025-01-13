@@ -19,7 +19,6 @@ export class ThreatsTableComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     this.threatService.getThreats().subscribe(data => {
-      console.log(data.data);
       this.dataSource = new MatTableDataSource<Threat>(data.data);
       this.dataSource.paginator = this.paginator;
     });
